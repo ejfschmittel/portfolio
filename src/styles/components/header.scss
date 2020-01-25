@@ -1,0 +1,173 @@
+@mixin sliders{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transition: .6s all;
+}
+
+@mixin hamburger-slice{
+    height: 4px;
+    width: 60%;
+    background: #aaa;
+    transition: all .3s;
+}
+
+@mixin hamburger-slice-pseudo{
+    @include hamburger-slice();
+    content: "";
+    position: absolute;
+    width: 100%;
+    
+}
+
+.main-header{
+
+    position: relative;
+
+    &__nav-wrapper{
+        z-index: 800;
+        background: #fff;
+        width: 100%;
+    }
+
+    &__nav{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        ul {
+            display: flex;
+            list-style: none;
+            li{
+                margin: 0 .5rem;
+            }
+        }
+    }
+
+    &__toggle-input{
+        display: none;
+    }
+
+    &__toggle-btn{
+        position: fixed;
+        background: #eee;
+        height: 5rem;
+        width: 5rem;
+        z-index: 1000;
+        right: 2rem;
+        top: 1.5rem;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 .2rem .5rem rgba(0,0,0,.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        user-select: none;
+
+        span{
+            position: relative;
+            @include hamburger-slice();
+            //background-color: #eee;
+
+            &::before{
+                @include hamburger-slice-pseudo();
+                top: -10px;
+                //transform: translateY(10px) rotate(-45deg) ;
+            }
+
+            &::after{
+                @include hamburger-slice-pseudo();
+                top: 10px;
+
+                //transform: translateY(-10px) rotate(45deg) ;
+            }
+        }
+
+        &:hover{
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.3);
+        }
+    }
+
+    /* on menu checked */
+    &__toggle-input:checked ~ &__toggle-btn{
+        span{
+            background: #eee;
+
+            &::before{
+                transform: translateY(10px) rotate(-45deg) ;
+            }
+    
+            &::after{
+                transform: translateY(-10px) rotate(45deg) ;
+            }
+        }   
+    }
+
+    &__toggle-input:checked ~ &__slider-left{
+        transform: translate(0,0); 
+    }
+
+    &__toggle-input:checked ~ &__slider-right{
+        transform: translate(0,0); 
+    }
+
+    &__toggle-input:checked ~ &__nav-wrapper{
+        position: fixed;
+        width: 80%;
+        max-width: 50rem;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: slide-down-menu 1s forwards;
+        
+        .main-header__nav{
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            ul{
+                flex-direction: column;
+                margin: 0;
+
+                li{
+                    margin: .3rem 0;
+                }
+            }
+        }
+    }
+
+    @keyframes slide-down-menu{
+        0%{
+            transform: translate(-50%, -100%);
+        }
+        100%{
+            transform: translate(-50%, -50%);
+        }
+    }
+
+   
+
+
+    &__slider-left{
+        @include sliders();
+        background: rgba(100,0,0,.6);
+        clip-path: polygon(0 0, 0 100%, 100% 0);
+        transform: translate(-100%,100%);   
+    }
+
+    &__slider-right{
+        @include sliders();
+    
+        background: rgba(0,0,0,.6);
+        clip-path: polygon(0 100%, 100% 100%, 100% 0);
+        transform: translate(100%, -100%);
+    }
+
+}
+
+/*
+    remove outline from label
+    make sliders
+*/

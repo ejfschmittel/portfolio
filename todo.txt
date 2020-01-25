@@ -1,0 +1,46 @@
+
+inspiratioN:
+https://www.justinchi.me/
+
+about me 
+skills
+
+projects 
+
+
+const content = {
+
+}
+
+
+make site in german / english
+have some animations / tranistions
+
+
+one page / similar to scss course
+
+
+above the fold planning:
+    menu / de / eng
+
+
+have the project layout change
+    - so basic grid for start
+    - one line grid for other
+    - 
+
+
+- custom logo
+
+ejfs
+ES 
+oder robbe (transparency)
+
+Header
+    - normal / normal 
+    - scroll / mobile
+    - mobile / mobile
+
+
+
+links: github / email / linkedin?

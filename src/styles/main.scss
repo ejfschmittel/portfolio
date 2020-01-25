@@ -1,0 +1,17 @@
+
+
+.page-section{
+    width: 100%;
+    min-height: 20rem;
+    background: #eee;
+    padding: 2rem;
+}
+
+.page-section-2{
+    background: #ddd;
+    height: 30rem;
+    clip-path: circle(50%, 50%, 50%);
+    margin-top: 10rem;
+}
+
+@import "./components/header.scss";
