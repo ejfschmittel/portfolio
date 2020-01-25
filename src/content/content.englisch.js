@@ -3,6 +3,9 @@ const content = {
         headline: "Portfolio",
         paragraph: "Some englisch text.",
         buttonText: "Change to german."
+    },
+    section1:{
+        headline: "Headline 1"
     }
 }
 

@@ -1,5 +1,5 @@
-import React from 'react'
-
+import React, {useContext} from 'react'
+import LanguageContext from "../contexts/LanguageContext"
 /*
     background image ??? 
     placeholder;
@@ -7,10 +7,15 @@ import React from 'react'
 */
 
 const Component = () => {
+    const {
+        languageText
+    } = useContext(LanguageContext);
+
+    console.log(languageText)
 
     return(
         <section className="page-section">
-            <h1>Page Section 1</h1>
+            <h1>{languageText.section1.headline}</h1>
         </section>
     )
 }

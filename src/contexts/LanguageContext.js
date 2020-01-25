@@ -9,25 +9,30 @@ const LanguageContext = createContext({})
 
 
 export const LanguageContextProvider = ({children}) => {
-
+    const [currentLanguageShortcode, setCurrentLanguageShortcode] = useState(SUPPORTED_LANGUAGES.englisch.shortcode)
     const [languageText, setLanguageText] = useState(text.EN)
 
     useEffect(() => {
         // check browser / language / origin 
         setLanguageText(text.EN)
     }, [])
+
+    useEffect(() => {
+        // check browser / language / origin 
+        setLanguageText(text[currentLanguageShortcode])
+    }, [currentLanguageShortcode])
     
 
     const changeLanguage = (shortcode) => {
         // validate shortcode
-
-        setLanguageText(text[shortcode])
+        setCurrentLanguageShortcode(shortcode)
     }
 
     return (
         <LanguageContext.Provider
             value={{
                 changeLanguage,
+                currentLanguageShortcode,
                 languageText,
             }}
         >
